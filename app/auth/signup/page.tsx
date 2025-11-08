@@ -13,7 +13,17 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+// 1. Add Validation (Default behaviour is turned off to prevent page refresh)
+// 2. Function Implementation for social login
+// 3. Function Implementation to send OTP
+// 4. Function Implementation to send data to server (Handle Submit)
+// 5. Separation Server Component from Client Component
+// 6. Make the UI part common for login & registration modular
+// 7. If server said existing user then prompt user to login
+// 8. Discuse on whether to keep toggle button or not
+
 export default function SignupPage() {
+  
   const [activeTab, setActiveTab] = useState<"email" | "phone">("email");
 
   const [showPassword, setShowPassword] = useState(false);
@@ -31,7 +41,7 @@ export default function SignupPage() {
   const [otpSent, setOtpSent] = useState(false);
   const [timer, setTimer] = useState(0);
 
-  // mock resend timer
+  // Timer Countdown Function
   useEffect(() => {
     if (timer > 0) {
       const interval = setInterval(() => {
