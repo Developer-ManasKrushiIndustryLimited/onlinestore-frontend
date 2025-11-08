@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Mail, Lock, Phone, Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
 
 // 1. Seperate Client Component Code (hooks) from Server Component File
 // 2. Insert API code in handleSubmit() -- send form data to server & receive validation
@@ -10,9 +11,10 @@ import { Mail, Lock, Phone, Eye, EyeOff } from "lucide-react";
 // 5. Code for incorrect password prompt/message after validation -- from scratch
 // 6. Session management for remember me feature -- Current = Onchange() & setFormData()
 // 7. OTP Verification for forgot password -- Current = OnClick() & console.log()
+// 8. Input Validation for blank & incorrect input field
 
 export default function LoginPage() {
-  
+
   // Hooks Usage -- Client Side Component
   const [loginMethod, setLoginMethod] = useState("email");
   const [showPassword, setShowPassword] = useState(false);
@@ -36,10 +38,9 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex">
-
+      
       {/* Left Side - Image : For desktop user*/}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-green-700 to-green-900 relative overflow-hidden"> 
-
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-green-700 to-green-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 left-10 w-32 h-32 bg-yellow-400 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-20 w-40 h-40 bg-green-400 rounded-full blur-3xl"></div>
@@ -77,20 +78,24 @@ export default function LoginPage() {
             </div>
           </div>
         </div>
-
       </div>
 
       {/* Right Side - Login Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-amber-50">
         <div className="w-full max-w-md">
-
+          
           {/* Mobile Logo : For smartphone user*/}
           <div className="lg:hidden text-center mb-8">
-            <h1 className="text-4xl font-bold text-green-800 mb-2">🌾Manas Krushi</h1>
+            <h1 className="text-4xl font-bold text-green-800 mb-2">
+              🌾Manas Krushi
+            </h1>
             <p className="text-green-700">Agricultural Marketplace</p>
           </div>
 
+          {/* Sign In Form Wrapper */}
           <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-green-100">
+
+            {/* Login Form Heading */}
             <h2 className="text-3xl font-bold text-green-900 mb-2">
               Welcome Back
             </h2>
@@ -98,7 +103,7 @@ export default function LoginPage() {
               Sign in to continue to your account
             </p>
 
-            {/* Login Method Toggle */}
+            {/* Toggle Tab */}
             <div className="flex gap-2 mb-6 bg-green-50 p-1 rounded-lg">
               <button
                 onClick={() => setLoginMethod("email")}
@@ -124,7 +129,8 @@ export default function LoginPage() {
               </button>
             </div>
 
-            <div className="space-y-5">
+            {/* Form */}
+            <form className="space-y-5">
               {/* Email/Phone Input */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -145,10 +151,15 @@ export default function LoginPage() {
                         ? "you@example.com"
                         : "+91 12345 7890"
                     }
-                    value={loginMethod === "email" ? formData.email : formData.phone}
+                    value={
+                      loginMethod === "email" ? formData.email : formData.phone
+                    }
                     onChange={(e) =>
-                      setFormData({ ...formData, 
-                        [loginMethod === "email" ? "email" : "phone"]: e.target.value })
+                      setFormData({
+                        ...formData,
+                        [loginMethod === "email" ? "email" : "phone"]:
+                          e.target.value,
+                      })
                     }
                     className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all"
                     required
@@ -172,7 +183,7 @@ export default function LoginPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, password: e.target.value })
                     }
-                    className="w-full pl-10 pr-12 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all"
+                    className="w-full pl-10 pr-12 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all [&::-ms-reveal]:hidden [&::-ms-clear]:hidden"
                     required
                   />
                   <button
@@ -219,7 +230,7 @@ export default function LoginPage() {
               >
                 Sign In
               </button>
-            </div>
+            </form>
 
             {/* Divider */}
             <div className="relative my-6">
@@ -262,18 +273,17 @@ export default function LoginPage() {
             {/* Sign Up Link */}
             <p className="text-center mt-6 text-sm text-gray-600">
               Don't have an account?{" "}
-              <button
-                onClick={() => console.log("Navigate to signup")}
-                // On click navigate to signup page
-                className="text-green-700 hover:text-green-800 font-semibold"
-              >
-                Sign up
-              </button>
+              <Link
+              href="signup"
+              className="text-green-700 hover:text-green-800 font-semibold"
+            >
+              Sign-Up
+            </Link>
             </p>
+
           </div>
         </div>
       </div>
-
     </div>
   );
 }
