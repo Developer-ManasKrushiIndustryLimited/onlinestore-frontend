@@ -39,7 +39,7 @@ export default function OrganicCarouselSlide() {
 
   return (
 
-    <div className="w-full bg-gray-50 py-6 md:py-8 px-3 md:px-6">
+    <div className="w-full bg-white py-6 md:py-8 px-3 md:px-6">
       <div className="max-w-full mx-auto">
         
         {/* Carousel Container */}

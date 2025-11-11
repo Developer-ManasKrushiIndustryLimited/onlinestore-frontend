@@ -1,3 +1,5 @@
+import Navbar from "@/components/ui/Navbar"
+
 import OrganicShowcaseCarousel from "@/components/ui/Banner"
 import OrganicCarouselSlide from "@/components/ui/Slides"
 import OrganicCarousel from "@/components/ui/Carousel"
@@ -8,22 +10,22 @@ export default function Home() {
   return (
     <main>
 
+        {/* ----- NAVBAR ----- */}
+        <Navbar/>
+
+        {/* ----- CAROUSEL ----- */}
         {/* Banner.tsx */}
         {/* <OrganicShowcaseCarousel/> */}
-
-        {/* Slides.tsx  -- SELECTED*/}
-        <OrganicCarouselSlide/>
-
         {/* Carousel.tsx */}
         {/* <OrganicCarousel/> */}
-
         {/* HeroSection.tsx */}
         {/* <HeroSection/> */}
-
         {/* CustomCarousel.tsx */}
         {/* <CustomCarousel/> */}
-        
 
+        {/* Slides.tsx  ----- SELECTED ----- */}
+        <OrganicCarouselSlide/>
+        
     </main>
   )
 }
