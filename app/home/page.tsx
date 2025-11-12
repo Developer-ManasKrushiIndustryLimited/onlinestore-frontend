@@ -6,6 +6,8 @@ import OrganicCarousel from "@/components/ui/Carousel"
 import HeroSection from "@/components/ui/HeroSection"
 import CustomCarousel from "@/components/ui/CustomCarousel"
 
+import Footer from "@/components/ui/Footer"
+
 export default function Home() {
   return (
     <main>
@@ -25,6 +27,9 @@ export default function Home() {
 
         {/* Slides.tsx  ----- SELECTED ----- */}
         <OrganicCarouselSlide/>
+
+        {/* ----- FOOTER ----- */}
+        <Footer/>
         
     </main>
   )
